@@ -1,6 +1,7 @@
 package com.estudo.workshopmongodb.config;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.TimeZone;
 
@@ -42,6 +43,12 @@ public class Instantiation implements CommandLineRunner{
 		Post post2 = new Post(null, sdf.parse("23/03/2022"), "Bom dia", "Acordei Feliz!", new AuthorDTO(user1));
 		
 		postRepository.saveAll(Arrays.asList(post1, post2));
+		
+		user1.getPosts().addAll(Arrays.asList(post1, post2));
+		
+		userRepository.save(user1);
+		
+		
 	}
 
 }
